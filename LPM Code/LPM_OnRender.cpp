@@ -28,7 +28,7 @@ void CApp::OnRender() {
 
 
     location = {(25*scaling_factor_W),(50*scaling_factor_H),(600*scaling_factor_W),(400*scaling_factor_H)};
-    //Draw some gun text~
+    //Draw the gun text
     SDL_BlitSurface(myGun, NULL, Surf_Display, &location);
 
     //Draw the ground
@@ -64,7 +64,6 @@ void CApp::OnRender() {
 
 
     int i;
-    //std::cerr << enemy::enemyList.size() << "\n";
 
     //Draw all the platforms
     for(i = 0; i < platform::platformList.size(); i++)
@@ -89,8 +88,6 @@ void CApp::OnRender() {
 
             bullet::bulletList[i]->drawHitbox(Surf_Display, drawHitboxes);
         }
-
-
 
     Musket.OnRender(Surf_Display);
 

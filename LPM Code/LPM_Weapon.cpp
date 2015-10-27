@@ -27,11 +27,11 @@ bool LPM_Weapon::OnLoad(char* File, double Width, double Height, int MaxFrames) 
     if((Surf_Weapon = LPM_Surface::OnLoad(File)) == NULL) {
         return false;
     }
-    //Set them parameters not that we got em.
+    //Set the parameters
     this->Width = Width;
     this->Height = Height;
 
-    //Give the animation control for this dude some info concerning how many frames he has
+    //Give the animation control the maximum amount of animation frames
     Anim_Control.MaxFrames = MaxFrames;
 
     Weapon_Box.update(X, Y, this->Width, this->Height);
@@ -49,12 +49,9 @@ void LPM_Weapon::OnHit() {
                     if(!enemy::enemyList[i] || i > enemy::enemyList.size())
                         continue;
 
-                    //std::cerr << "last in bullet \n";
-
                     if(i < enemy::enemyList.size() && enemy::enemyList[i]->enemyBox.collisionCheck(Weapon_Box) && !enemy::enemyList[i]->justHit)
                     {
-                        //this->hasKilled = true;
-                        //other->hasShot = false;
+                        //Input the characteristic of an enemy being hit
                         enemy::enemyList[i]->HP -= 5;
                         enemy::enemyList[i]->damageDisplay = 5;
                         enemy::enemyList[i]->numCollisions ++;
@@ -74,7 +71,7 @@ void LPM_Weapon::OnRender(SDL_Surface* Surf_Display){
     //First check if they exist
     if(Surf_Weapon == NULL || Surf_Display == NULL) return;
 
-    //Draw them using special better draw for animation purposes.
+    //Draw them using special draw for animation purposes.
     //Sections off each frame, and AnimState traverse the rows of animations
     //Use the current frame to make sure you are drawing the correct frame
     LPM_Surface::OnDraw(Surf_Display, Surf_Weapon, X, Y, AnimState * Width, Anim_Control.GetCurrentFrame()*Height, Width, Height);

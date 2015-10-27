@@ -10,68 +10,6 @@ void CApp::OnEvent(SDL_Event* Event) {
 //When a key is pressed, handle it in here
 void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode){
 
-
-        //Causes ground to move, so that Yoshi looks like he is moving
-        //Yoshi's legs are so powerful, he moves the crust under him
-        /*if(sym == SDLK_LEFT){
-                        Entity1.Anim_Control.FrameRate = 100;
-                        Entity2.Anim_Control.FrameRate = 100;
-                        Ground.X += 2;
-                        Background.X +=.1;
-                        Entity1.AnimState = 2;
-                        Entity2.AnimState = 2;
-                        if(keystate[SDLK_SPACE]){
-                            jump();
-                        }
-        }
-        //Samething, other direction, also makes yoshi turn around
-        if(sym == SDLK_RIGHT) {
-                        Entity1.Anim_Control.FrameRate = 100;
-                        Entity2.Anim_Control.FrameRate = 100;
-                        Ground.X -= 2;
-                        Background.X -=.1;
-                        Entity1.AnimState = 3;
-                        Entity2.AnimState = 3;
-                        if(keystate[SDLK_SPACE]){
-                            jump();
-                        }
-        }
-
-        //If yuou press 1, control the first Yoshi. Cause you hate him or whatever. Same goes with 2.
-        if(sym == SDLK_1){ Entity1.Activated = 1; Entity2.Activated = 0;}
-        if(sym == SDLK_2){ Entity2.Activated = 1; Entity1.Activated = 0;}
-
-        if(sym == SDLK_SPACE && !NOJUMP){
-
-                        if(keystate[SDLK_LEFT]){
-                            Ground.X += 2;
-                        }
-                        if(keystate[SDLK_RIGHT]){
-                            Ground.X -= 2;
-                        }
-                        jump();
-
-        }
-
-        if(sym == SDLK_z){
-                     Entity1.AnimState = 4;
-                     Entity2.AnimState = 4;
-                     Entity1.Anim_Control.FrameRate = 50;
-                     Entity2.Anim_Control.FrameRate = 50;
-                     Ground.X += 15;
-                     Background.X += .3;
-        }
-
-        if(sym == SDLK_x){
-                     Entity1.AnimState = 5;
-                     Entity2.AnimState = 5;
-                     Entity1.Anim_Control.FrameRate = 50;
-                     Entity2.Anim_Control.FrameRate = 50;
-                     Ground.X -= 15;
-                     Background.X -= .3;
-        }
-                //If you press ESC, go to the pause menu
-        */
         if(sym == SDLK_ESCAPE){
                 pauseMenu(Surf_Display);
         }
@@ -93,17 +31,17 @@ void CApp::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode){
 void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode){
         switch(sym) {
 
-        //Make him fart rainbows!
+        //Move left
         case SDLK_LEFT: Entity1.AnimState = 2;
                         Entity2.AnimState = 1;
                         break;
-        //Make him fart rainbows!
+        //Move right
         case SDLK_RIGHT: Entity1.AnimState = 0;
                         Entity2.AnimState = 0;
                         break;
 
 
-        //Make him fart rainbows!
+        //Stop
         case SDLK_1: Entity1.AnimState = 0;
                  Entity2.AnimState = 0;break;
         case SDLK_2: Entity1.AnimState = 0;
@@ -131,19 +69,10 @@ void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode){
                         break;
         case SDLK_w:    hasSwitched = false;
                         break;
-       /* case SDLK_x:    Entity1.AnimState = 0;
-                        Entity2.AnimState = 0;
-
-                        break;
-        /*case SDLK_z:    Entity1.AnimState = 1;
-                        Entity2.AnimState = 1;
-
-                        break;*/
         case SDLK_s: Musket.changeReload = false;
                         break;
 
-        default:;//{Entity1.AnimState = 0;
-                // Entity2.AnimState = 0;}
+        default:;
 
     }
 
@@ -152,7 +81,7 @@ void CApp::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode){
 
 
 
-//Close the window, I'm out.
+//Close the window
 void CApp::OnExit(){
     active = false;
     Running = false;

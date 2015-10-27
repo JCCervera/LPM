@@ -1,17 +1,5 @@
 #include "CApp.h"
 
-/*CApp::CApp() {
-    //Intiate the surfaces
-    Surf_Display = NULL;
-    Surf_Backdrop = NULL;
-
-    Ascent = 10;
-    NOJUMP = false;
-
-    //Set running to true
-    Running = true;
-}*/
-
 
 CApp::CApp(char* fileName)
 {
@@ -20,6 +8,7 @@ CApp::CApp(char* fileName)
     Surf_Display = NULL;
     Surf_Backdrop = NULL;
 
+    //Intiate variables concerning movement
     Ascent = (2*scaling_factor_H);
     DashDistance = 0.0f;
     NoDash = bossMode = false;
@@ -38,17 +27,17 @@ int CApp::OnExecute() {
         return -1;
     }
 
-    //Constructor the event reader
+    //Construct the event reader
     SDL_Event Event;
 
     //play the music
     playHUBBG();
 
-    //While its running, do the stuffs
+    //While its running, listen for player inputs
     while(Running) {
-        //While we are looking for some events
+        //While player inputs are being inputed
         while(SDL_PollEvent(&Event)) {
-            //Get those events rolling
+            //Decipher player inputs
             OnEvent(&Event);
 
         }
@@ -64,12 +53,4 @@ int CApp::OnExecute() {
     return 0;
 }
 
-//MAIN
-/*
-int main(int argc, char* argv[]) {
-    //Constructor app
-    CApp LaserPoweredMustketGame;
-
-    return LaserPoweredMustketGame.OnExecute();
-}*/
 

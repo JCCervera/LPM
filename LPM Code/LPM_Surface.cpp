@@ -1,11 +1,10 @@
 #include "LPM_Surface.h"
 #include "ResolutionManager.h"
 #include "CApp.h"
-//Construct absolutely nothing
 LPM_Surface::LPM_Surface() {
 }
 
-//Load them surfaces
+//Load the surfaces
 SDL_Surface* LPM_Surface::OnLoad(char* File) {
     //Intialize a temporary surface and the surface to be returned
     SDL_Surface* Surf_Temp = NULL;
@@ -23,14 +22,14 @@ SDL_Surface* LPM_Surface::OnLoad(char* File) {
 
     //Free the temporary surface
     SDL_FreeSurface(Surf_Temp);
-    //Return the surface we all like and deserve
+    //Return the surface
     return Surf_Return;
 }
 
 //Draw the surface unto the window
 bool LPM_Surface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y) {
 
-    //Check if we actually got some surfaces
+    //Check if we actually have the surfaces
     if(Surf_Dest == NULL || Surf_Src == NULL){
         return false;
     }
@@ -42,7 +41,7 @@ bool LPM_Surface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, i
     DestR.x = X;
     DestR.y = Y;
 
-    //Do it!
+    //Draw the surface
     SDL_BlitSurface(Surf_Src, NULL, Surf_Dest, &DestR);
 
     return true;
@@ -50,7 +49,7 @@ bool LPM_Surface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, i
 
 //A different draw that accomplishes different goals
 bool LPM_Surface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, int Y, int X2, int Y2, int W, int H){
-    //Check if we got some surfaces
+    //Check if we have the surfaces
     if(Surf_Dest == NULL || Surf_Src == NULL){
         return false;
     }
@@ -62,7 +61,7 @@ bool LPM_Surface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, i
     DestR.x = X;
     DestR.y = Y;
 
-    //Rectangle we are using to section off an image from the bigger image
+    //Rectangle we are using to section off an image from the whole image
     SDL_Rect SrcR;
 
     //Where we section off the smaller image from
@@ -73,7 +72,7 @@ bool LPM_Surface::OnDraw(SDL_Surface* Surf_Dest, SDL_Surface* Surf_Src, int X, i
     SrcR.w = W;
     SrcR.h = H;
 
-    //DO IT!!!!
+    //Draw the surface
     SDL_BlitSurface(Surf_Src, &SrcR, Surf_Dest, &DestR);
 
     return true;

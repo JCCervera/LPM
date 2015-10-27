@@ -72,8 +72,8 @@ private:
 
         LPM_Weapon      Musket;
 
-        LPM_Entity      Entity1;//Yoshi 1
-        LPM_Entity      Entity2;//Yoshi 2
+        LPM_Entity      Entity1;//Player 1
+        LPM_Entity      Entity2;//Debug Entity 2
 
         Uint8           *keystate;
         int             currentHP, length, i, gunType;
@@ -86,6 +86,7 @@ private:
         TTF_Font        *font;
         SDL_Color       text_color;
 
+        //UI text and visuals
         std::string     HPtext, maxText, HPDisplay, gunDisplay;
         std::stringstream out;
         SDL_Surface     *text, *gameover, *myGun;
@@ -95,8 +96,9 @@ private:
         float DashDistance;
         bool  NoDash;
 
-        platform        testPlatform; //We will declare platforms more gracefully later. For now, this hard coded one is being used to test the platform class
-        enemy           baseEnemy; //See above
+        //Variables for the sake of debugging
+        platform        testPlatform;
+        enemy           baseEnemy;
         madmask         testMask;
 
     public:

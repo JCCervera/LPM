@@ -6,6 +6,7 @@ void CApp::OnLoop() {
 
     if(portal::level == 2)
         {
+            //If you entered the last boss room
             bossRoom = true;
             Mix_HaltMusic();
             loadBossSound();
@@ -16,7 +17,7 @@ void CApp::OnLoop() {
             bossMode = true;
             portal::level = -1;
         }
-
+    //The sword weapon is not in use
     if(Musket.AnimState == 2 && !keystate[SDLK_a]) Musket.hasSwung = false;
     if(playerBox.distance(Musket.X, Entity1.X, Musket.Y, Entity1.Y) > 150*scaling_factor_W)
         {
@@ -64,8 +65,6 @@ void CApp::OnLoop() {
 
     //Loop function for Entity1 (just animates)
     Entity1.OnLoop();
-
-
 
     onPlatform = false;
 
@@ -278,14 +277,6 @@ void CApp::OnLoop() {
             hasSwitched = true;
         }
 
-    //Dashing -NOT CURRENTLY IMPLEMENTED-
-    /*if(DashDistance > 0 && !keystate[SDLK_x] && !keystate[SDLK_z]){
-            DashDistance -= (5*scaling_factor_W);
-    }
-    if(DashDistance == 0){
-        NoDash = false;
-    }*/
-
     //Movement
     if(!bossMode && keystate[SDLK_LEFT]){
         Entity1.isFacingLeft = true;
@@ -421,30 +412,6 @@ void CApp::OnLoop() {
             Musket.X += (2*scaling_factor_W);
         }
     }
-    /*if(keystate[SDLK_z] && !NoDash)
-    {
-
-        		Entity1.Anim_Control.FrameRate = 50;
-        		Entity2.Anim_Control.FrameRate = 50;
-        		DashDistance += (1*scaling_factor_W);
-        		if(Entity1.Facing == 'R'){
-            			Ground.X -= (2*scaling_factor_W);
-            			Background.X -= (.3*scaling_factor_W);
-            			Entity1.AnimState = 4;
-            			Entity2.AnimState = 4;
-        		}
-        		if(Entity1.Facing == 'L'){
-            			Ground.X += (2*scaling_factor_W);
-            			Background.X += (.3*scaling_factor_W);
-            			Entity1.AnimState = 5;
-            			Entity2.AnimState = 5;
-        		}
-        		if(DashDistance == (75*scaling_factor_W)){
-            			NoDash = true;
-        		}
-
-    }*/
-
 
     //Jumping
     if(Entity1.Y < minY && !keystate[SDLK_SPACE]){
@@ -460,12 +427,6 @@ void CApp::OnLoop() {
         }
     }
 
-    //FPS THROTTLE
-  /*  std :: cerr <<(SDL_GetTicks()- startTime)<<endl;
-    if ((scaling_factor_H < 1)&&(scaling_factor_W < 1)){
-        startTime = SDL_GetTicks();
-        SDL_Delay((2*1000/540));
-    }*/
     if ((SDL_GetTicks()- startTime) < (1000.0/600)){
         SDL_Delay((1000.0/400));
     }

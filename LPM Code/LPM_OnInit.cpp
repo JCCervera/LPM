@@ -23,7 +23,7 @@ bool CApp::OnInit() {
     gameover = TTF_RenderText_Solid(font, "Game Over", text_color);
     myGun = TTF_RenderText_Solid(font, gunDisplay.c_str(), text_color);
 
-    //Initialize everything, I guess. Checking if SDL started fine
+    //Initialize everything, Checking if SDL started fine
     if(SDL_Init(SDL_INIT_EVERYTHING) < 0){
         return false;
     }
@@ -67,18 +67,18 @@ bool CApp::OnInit() {
     Entity1.Y = minY;
 
 
-    //Load some green
+    //Load green green portion of health
     if((Surf_Green = LPM_Surface::OnLoad("green.png")) == NULL)
     {
         return false;
     }
 
-    //Load some red
+    //Load red portion of health
     if((Surf_Red = LPM_Surface::OnLoad("red.png")) == NULL)
     {
         return false;
     }
-    //Load some frame
+    //Load the frame of the healthbar
     if((Surf_Frame = LPM_Surface::OnLoad("healthbarframe.png")) == NULL)
     {
         return false;
@@ -97,7 +97,7 @@ bool CApp::OnInit() {
     //Scale the LPM
     Musket.Surf_Weapon = zoomSurface(Musket.Surf_Weapon, .75, .75, 1);
 
-    //Allows you to hold down them keys
+    //Allows you to hold down the keys
     SDL_EnableKeyRepeat(1, SDL_DEFAULT_REPEAT_INTERVAL/3);
 
     //Center the player
